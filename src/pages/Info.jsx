@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PrevButton from "../components/PrevButton";
 import InfoInput from "../components/InfoInput";
 import AddButton from "../components/AddButton";
@@ -25,11 +25,36 @@ const Info = () => {
     setIngredientList((prev) => [...prev, newItem])
   };
 
+  const handleChange = (data) => {
+    //console.log(data);
+
+    // 받아온 재료 값으로 재료 목록 업데이트
+    setIngredientList((prev)=> prev.map((item) =>  item.id === data.id ? data :  item));
+
+  
+  };
   const handleNext = () => {
     // 미션: chat페이지로 이동되게 기능 구현
     history("/chat");
   };
 
+  /* 
+  // 1. 해당 컴포넌트에 존재하는 모든 state를 감시하며 state들이 변경이 일어날 때마다 실행
+  useEffect(()=>{
+    console.log("뭔가가 변경");
+  });
+
+  // 2. component 가 실행되는 딱 한 번 실행
+  useEffect(()=>{
+      console.log("최초 변경");  
+  }, []);
+
+  //3. 특정 state가 변경이 일어났을 때 실행
+  useEffect(()=>
+    {
+      console.log("ingredientList",ingredientList );
+    }, [ingredientList]);
+*/
   // view
   return (
     <div className="w-full h-full px-6 pt-10 break-keep overflow-auto">
@@ -52,7 +77,7 @@ const Info = () => {
             {/* START:input 영역 */}
             <div>
               {ingredientList.map((item) => (
-                <InfoInput key={item.id} content={item} />
+                <InfoInput key={item.id} content={item} onChange={handleChange} />
               ))}
             </div>
             {/* END:input 영역 */}
