@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const InfoInput = ({ content,onChange }) => {
+const InfoInput = ({ content,onChange, onDelete }) => {
   // logic
-  const { label, text } = content;
+  const { id, label, text } = content;
 
   const [value, setValue] = useState("");
 
@@ -16,6 +16,8 @@ const InfoInput = ({ content,onChange }) => {
 
   const onRemove = () => {
     console.log("재료 삭제하기");
+    onDelete(id);
+
   };
 
   // view
@@ -25,7 +27,7 @@ const InfoInput = ({ content,onChange }) => {
         <label
           htmlFor={label}
           className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
-                      absolute"
+                      absollute"
         >
           {text}
         </label>
