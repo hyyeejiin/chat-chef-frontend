@@ -12,7 +12,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/info" element={<Info send={(data)=>setIngredientList(data) }/>} />
+      <Route path="/info" element={<Info sendIngredientList={(data)=>setIngredientList(data) }/>} />
       <Route path="/chat" element={<Chat ingredientList={ingredientList}/>} />
     </Routes>
   );

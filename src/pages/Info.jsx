@@ -40,9 +40,6 @@ const Info = ({ sendIngredientList }) => {
   };
 
   const handleNext = () => {
-    //sendIngredientList(ingredientList);
-    // 미션: chat페이지로 이동되게 기능 구현
-    history("/chat");
     // 미션: 입력된 재료가 1개도 없는 경우 코드 실행막기 (return)
     // 사용자 입력값이 있는 경우
     const filteredList = ingredientList.filter(
